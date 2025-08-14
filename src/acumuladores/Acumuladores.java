@@ -13,9 +13,84 @@ public class Acumuladores {
 	 * @param num
 	 * @return
 	 */
-	public boolean todosMultiplosEnAlgunaFila(int[][] mat, int num) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+	
+	
+	public static boolean numNoPositivo (int  num) {
+		
+		
+				if (num <= 0 ) {
+					System.out.println(num + " no es positivo");
+					return true;
+				}
+				return false; 
 	}
+	
+	public static boolean esMultiplo (int op1, int op2)
+	{
+		System.out.println("Estoy en la funcion esMultiplo y los operadores son op1 = " + op1 + " y op2 = " + op2 );
+		if ( op1%op2 ==0) {
+			return true;
+		}
+	
+		return false;
+	}
+	
+	public static boolean analisisColumnaEsMultiplo (int [] columna, int op2) {
+		
+		
+		
+		System.out.println("La columna es " + columna);
+		
+		boolean ret = true;
+		for (int i = 0; i< columna.length; i ++) {
+			System.out.println("El numero que se va a analizar es "+ columna[i]);
+			ret= ret & esMultiplo(columna[i], op2);
+			if (ret == false) {
+				return false;
+			}
+			System.out.println("El estado de ret es :" + ret );
+			
+		}
+		return ret; 
+	}
+	
+	public boolean matrizVacia (int [] [] mat) {
+		
+		if (mat.length == 0) {
+			return true;
+		}
+		
+		return false; 
+	}
+	
+	
+	public boolean todosMultiplosEnAlgunaFila(int[][] mat, int numExisteFilaDeMultiplos) {
+		
+		if (matrizVacia(mat)) 
+			{return false;}
+		
+		System.out.println("El numero que ingresa como divisor es " + numExisteFilaDeMultiplos);
+		
+		if (numNoPositivo(numExisteFilaDeMultiplos)) {
+			return false;
+		}
+		
+		boolean ret = true;
+		
+		for (int c = 0; c< mat.length; c ++)
+			{
+			ret=true;
+			System.out.println("Empieza analiss de la columna " + mat[c]+ "y el estadod e ret es " + ret);
+			ret = ret &&analisisColumnaEsMultiplo (mat[c], numExisteFilaDeMultiplos);
+			System.out.println("Finaliza analisis de la columna " + mat[c] + "y el estado de ret es  " + ret );
+			if (ret == true) 
+			{System.out.println("Son todos multipos ");
+			return ret ;}}
+					
+		
+		return ret;
+				}
+	
 	
 	/**
 	 * Dado 2 matrices se verifica si hay intersección entre las filas de cada

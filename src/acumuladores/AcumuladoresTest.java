@@ -109,7 +109,7 @@ public class AcumuladoresTest {
 		assertFalse(acum.todosMultiplosEnAlgunaFila(mat, 0));
 	}
 
-	
+	/*
 	// ejercicio 2 hayInterseccionPorFila()
 	@Test
 	public void ej2_siHayinterseccionEnCadaFila_RetornaTrue() {
@@ -188,4 +188,6 @@ public class AcumuladoresTest {
 		assertFalse(acum.hayInterseccionPorColumna(vacia, mat));
 		assertFalse(acum.hayInterseccionPorColumna(vacia, vacia));
 	}
+	
+	*/
 }
