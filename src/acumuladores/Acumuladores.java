@@ -19,7 +19,7 @@ public class Acumuladores {
 		
 		
 				if (num <= 0 ) {
-					System.out.println(num + " no es positivo");
+					//System.out.println(num + " no es positivo");
 					return true;
 				}
 				return false; 
@@ -27,7 +27,7 @@ public class Acumuladores {
 	
 	public static boolean esMultiplo (int op1, int op2)
 	{
-		System.out.println("Estoy en la funcion esMultiplo y los operadores son op1 = " + op1 + " y op2 = " + op2 );
+		//System.out.println("Estoy en la funcion esMultiplo y los operadores son op1 = " + op1 + " y op2 = " + op2 );
 		if ( op1%op2 ==0) {
 			return true;
 		}
@@ -39,16 +39,17 @@ public class Acumuladores {
 		
 		
 		
-		System.out.println("La columna es " + columna);
+		//System.out.println("La columna es " + columna);
+		
 		
 		boolean ret = true;
 		for (int i = 0; i< columna.length; i ++) {
-			System.out.println("El numero que se va a analizar es "+ columna[i]);
+			//System.out.println("El numero que se va a analizar es "+ columna[i]);
 			ret= ret & esMultiplo(columna[i], op2);
 			if (ret == false) {
 				return false;
 			}
-			System.out.println("El estado de ret es :" + ret );
+			//System.out.println("El estado de ret es :" + ret );
 			
 		}
 		return ret; 
@@ -69,7 +70,7 @@ public class Acumuladores {
 		if (matrizVacia(mat)) 
 			{return false;}
 		
-		System.out.println("El numero que ingresa como divisor es " + numExisteFilaDeMultiplos);
+		//System.out.println("El numero que ingresa como divisor es " + numExisteFilaDeMultiplos);
 		
 		if (numNoPositivo(numExisteFilaDeMultiplos)) {
 			return false;
@@ -80,11 +81,11 @@ public class Acumuladores {
 		for (int c = 0; c< mat.length; c ++)
 			{
 			ret=true;
-			System.out.println("Empieza analiss de la columna " + mat[c]+ "y el estadod e ret es " + ret);
+			//System.out.println("Empieza analiss de la columna " + mat[c]+ "y el estadod e ret es " + ret);
 			ret = ret &&analisisColumnaEsMultiplo (mat[c], numExisteFilaDeMultiplos);
-			System.out.println("Finaliza analisis de la columna " + mat[c] + "y el estado de ret es  " + ret );
+			//System.out.println("Finaliza analisis de la columna " + mat[c] + "y el estado de ret es  " + ret );
 			if (ret == true) 
-			{System.out.println("Son todos multipos ");
+			{//System.out.println("Son todos multipos ");
 			return ret ;}}
 					
 		
@@ -103,8 +104,83 @@ public class Acumuladores {
 	 * @param mat2
 	 * @return
 	 */
+	
+	
+	public boolean identidadDeFilas (int[][] mat1, int[][]mat2) {
+		
+		//System.out.println("Matriz 1 :" + mat1.length  + "   Matriz 2 : " + mat2.length);
+		
+		if (mat1.length == mat2.length) {
+			return true;
+		}
+		//System.out.println("No tienen la misma cantidad de filas");
+		return false;
+	} 
+	
+	
+	public boolean interseccion (int [] fila1, int [] fila2) {
+		
+		//System.out.println("La fila 1 es ");
+		for (int i= 0; i< fila1.length; i++) {
+			//System.out.print(fila1[i] + " ");
+		}
+		//System.out.println("   ");
+		//System.out.println("La fila 2 es ");
+		for (int i= 0; i< fila2.length; i++) {
+			//System.out.print(fila2[i] + " ");
+		}
+		
+		//System.out.println("");
+		boolean ret = false;
+		for (int a=0; a< fila1.length; a ++) {
+			//System.out.println("En el bucle de la fila 1 el nivel de revolucion es " + a );
+			for (int b=0; b< fila2.length; b++) {
+				//System.out.println("En el bucle de la fila 2 el nivel de revolucion es " + b);
+			
+			   //System.out.println("Se va a comparar  " +fila1[a] + " con " + fila2[b]);
+				if (fila1[a] == fila2[b]) 
+				{ret = true;
+				//System.out.println("Hay coincidencia");
+				return ret;}}
+	
+		}
+		return ret;
+	}
+	
+	
 	public boolean hayInterseccionPorFila(int[][] mat1, int[][]mat2) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+		
+		//System.out.println("Las matrices que se reciben son  " + mat1 + " y " + mat2 );
+		
+		boolean ret = true;
+		if (matrizVacia(mat1) || matrizVacia(mat2)) {
+			//System.out.println("Alguna de las matrices está vacia ");
+			return false;
+		}
+		
+		if (!(identidadDeFilas (mat1, mat2))) {
+			return false;
+		}
+		
+		
+		for (int i=0; i<mat1.length; i++) {
+			//System.out.println("Estoy en la revolucion " + i + " del bucle principal");
+			//System.out.println("Las filas que se enviaran son :" + mat1[i] + " y " +  mat2[i]);
+			
+			ret = ret && interseccion (mat1[i], mat2[i]);
+			//System.out.println("Luego de evaluar la interseccion ret es : "+ ret);
+			if (ret == false) {
+				return ret;
+			} 
+			
+		
+		}
+		
+		//System.out.println("Si sale del bucle es porque ret es verdadero y devuelve true " + ret );
+		//System.out.println("Esta por terminar la funcion");
+		//System.out.println("Va a retornar " + ret );
+		
+		return ret;
 	}
 	
 	/**
