@@ -58,6 +58,7 @@ public class Acumuladores {
 	public boolean matrizVacia (int [] [] mat) {
 		
 		if (mat.length == 0) {
+			//System.out.println("La matriz está vacía");
 			return true;
 		}
 		
@@ -195,8 +196,88 @@ public class Acumuladores {
 	 * @param nColum
 	 * @return
 	 */
+	
+	
+	public boolean comparaColumnaConFilas (int[] [] mat, int sumaColumna ) {
+		
+			boolean ret = true; 		
+			
+			for (int f = 0; f < mat.length; f++) {
+				int suma = 0;
+				//System.out.println("Se sumara la fila  " + f + " de la matriz");
+				//System.out.print("La fila es  : ");
+				for (int p=0; p< mat[0].length; p ++) {
+					suma = suma + mat[f][p];
+					//System.out.print(mat[f][p] + " ");
+					
+				}	
+				//System.out.println(" ");
+				//System.out.println("La suma total de la fila es " + suma);
+				if (suma > sumaColumna) {
+						ret = true;
+						return ret;
+				}	else {ret = false;}	
+				}			
+				return ret; 
+			}
+	
+	
+	public int sumaColumna (int [] columna) {
+		
+		//System.out.println("La columna que se sumará es : ");
+		
+		int suma=0;
+		for (int i =0; i< columna.length; i++) {
+			//System.out.print(columna[i] + " ");
+			suma = suma + columna[i];
+		}
+		//System.out.println("");
+		//System.out.println("La suma de la columna es : " + suma);
+		return suma;
+	}
+	
+	public  int []  separaColumna (int [] [] mat, int nColum) {
+		
+		//System.out.println("La cantidad de  columnas que tiene la matriz es  :" + mat[0].length);
+		//System.out.println("La columna a sumar es : " + nColum );
+		
+		int [] columna;
+		columna = new int [mat[0].length];
+		int posicionNuevaColumna=0;
+		for (int f=0; f< mat.length; f ++) {
+			for (int i = 0; i < mat[0].length; i++) {
+			
+			//System.out.println("El indice i de la fila " + f + " es " + i + " y la columna con la que debe coincidir es " + nColum);
+			if (i == nColum)
+			{columna[posicionNuevaColumna]= mat [f][i];
+			posicionNuevaColumna ++; 
+			break;}
+		}}
+		
+		//System.out.println("La columna que devuelve es :");
+		for (int i =0; i< columna.length; i ++) {
+			//System.out.print(columna[i] + " ");
+			
+		}
+		//System.out.println(" ");
+		return columna; 
+	} 
+	
 	public boolean algunaFilaSumaMasQueLaColumna(int[][] mat, int nColum) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+			
+		   if (matrizVacia (mat) ) {return false;}
+		   
+		   
+		   if ((mat[0].length -1) < nColum || nColum < 0 ) {
+			   return  false;}
+		   
+			boolean ret = true;
+			
+		   ret = comparaColumnaConFilas(mat, sumaColumna(separaColumna(mat, nColum)));
+			
+		   //System.out.println("El valor de retorno final es : " + ret );
+		   
+			return ret; 
 	}
 	
 	/**

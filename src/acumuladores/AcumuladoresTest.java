@@ -85,7 +85,8 @@ public class AcumuladoresTest {
 				{ 15, 14,  9 } };
 		matConDistintaCantColumnas = aux7;
 	}
-
+	
+	
 	// ejercicio 1 todosMultiplosEnAlgunaFila()
   
 	@Test
@@ -139,7 +140,9 @@ public class AcumuladoresTest {
 		assertFalse(acum.hayInterseccionPorFila(vacia, vacia));
 	}
 
-	/*
+	
+	
+	
 	// ejercicio 3 algunaFilaSumaMasQueLaColumna()
 	@Test
 	public void ej3_siHayFilaQueSumeMasQueNumColumna_RetornaTrue() {
@@ -161,7 +164,8 @@ public class AcumuladoresTest {
 	public void ej3_siMatrizEstaVaciaRetornaFalse() {
 		assertFalse(acum.algunaFilaSumaMasQueLaColumna(vacia, 0));
 	}
-
+	
+	/*
 	// ejercicio 4 hayInterseccionPorColumna()
 
 	@Test
@@ -191,5 +195,5 @@ public class AcumuladoresTest {
 		assertFalse(acum.hayInterseccionPorColumna(vacia, vacia));
 	}
 	
-	*/
+*/
 }
