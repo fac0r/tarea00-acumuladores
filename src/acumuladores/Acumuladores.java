@@ -292,6 +292,29 @@ public class Acumuladores {
 	 * @return
 	 */
 	public boolean hayInterseccionPorColumna(int[][] mat1, int[][]mat2) { 
-		throw new RuntimeException("Metodo no implementado aun!!!");
+		
+		if (matrizVacia (mat1) || matrizVacia (mat2) ) 
+		{return false;}
+		if (!(mat1[0].length == mat2[0].length)) 
+		{
+			//System.out.println("Retornara false porque la matriz 1 tiene " + mat1[0].length + " columnas y la matriz 2 " + mat2[0].length + " columnas");
+			return false;}
+		
+		boolean ret= false;
+		//System.out.println("Se separaran las columnas de cada matriz en una fila independiente cada una ");
+		for (int columna = 0; columna< mat1.length; columna ++ )  {
+			 
+			if (interseccion(separaColumna(mat1, columna), separaColumna(mat2, columna))) {
+				ret = true;
+				
+			}
+		}
+		
+		return ret;
+		
+		
+		
+		
+		
 	}
 }

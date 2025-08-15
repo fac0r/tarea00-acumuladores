@@ -165,7 +165,7 @@ public class AcumuladoresTest {
 		assertFalse(acum.algunaFilaSumaMasQueLaColumna(vacia, 0));
 	}
 	
-	/*
+	
 	// ejercicio 4 hayInterseccionPorColumna()
 
 	@Test
@@ -195,5 +195,5 @@ public class AcumuladoresTest {
 		assertFalse(acum.hayInterseccionPorColumna(vacia, vacia));
 	}
 	
-*/
+
 }
